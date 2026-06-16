@@ -1,0 +1,687 @@
+{% load static %}
+    <!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shikigami Notes</title>
+    <link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3">
+  <div class="container">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+      <span style="font-size:1.4rem;">🦊</span>
+      <span>Shikigami</span>
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+  <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="/">Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="{% url 'about' %}">About</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="{% url 'contact' %}">Contact</a>
+    </li>
+
+    <!-- Search -->
+    <li class="nav-item">
+      <form method="GET" action="/" class="navbar-search">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search notes..."
+          value="{{ query }}"
+        >
+
+        <button type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+    </li>
+
+    <!-- CTA -->
+    <li class="nav-item ms-lg-2">
+      <a class="btn btn-primary btn-sm px-3 rounded-pill" href="#">
+        Get Started
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+  </div>
+</nav>
+    {% include 'component/showmessage.html' %}
+    
+    {% csrf_token %}
+<section class="hero">
+  <div class="container hero-inner">
+
+    <!-- LEFT -->
+<div class="hero-left">
+
+  <span class="hero-badge">⚡ Your Second Brain</span>
+
+  <h1>
+    Capture.<br>
+    Organize.<br>
+    <span>Remember.</span>
+  </h1>
+
+  <p>
+    Shikigami transforms scattered thoughts into structured notes,
+    summaries, tasks, flashcards, and organized knowledge using AI —
+    so you never lose important ideas again.
+  </p>
+
+  <!-- MINI VALUE LINE -->
+  <p class="hero-mini">
+    Turn any note into <b>insights • tasks • study material • PDFs</b> in seconds.
+  </p>
+
+  <!-- KEY POINTS -->
+  <div class="hero-points">
+
+    <div class="point">🧠 AI understands context from your notes</div>
+
+    <div class="point">⚡ Auto-generates summaries & action items</div>
+
+    <div class="point">📚 Converts notes into flashcards for revision</div>
+
+    <div class="point">📄 Exports structured PDF instantly</div>
+
+  </div>
+
+  <!-- SMALL TRUST LINE -->
+  <div class="hero-trust">
+    Built for students, developers & creators who think fast and need structure.
+  </div>
+
+  <div class="hero-actions">
+    <a href="#" class="btn btn-primary hero-btn">Get Started</a>
+    <a href="#" class="btn btn-outline-secondary hero-btn">Explore Workspace</a>
+  </div>
+
+</div>
+
+    <!-- RIGHT -->
+<div class="preview-card">
+
+  <div class="preview-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="title">Shikigami AI Notes</span>
+  </div>
+
+  <h2 class="preview-note-title">
+  "Weekend Reminder List"
+</h2>
+
+<p class="preview-note-input">
+Pay electricity bill, buy groceries, call dentist, and book train tickets.
+</p>
+
+<!-- SUMMARY -->
+<div class="preview-section summary-card">
+  <div class="section-title">✨ Summary</div>
+
+  <p>
+    Personal errands and important tasks for the upcoming week.
+  </p>
+</div>
+
+<!-- TASKS -->
+<div class="preview-section task-card">
+  <div class="section-title">✅ Tasks</div>
+
+  <ul>
+    <li>Pay electricity bill</li>
+    <li>Buy groceries</li>
+    <li>Call dentist</li>
+  </ul>
+</div>
+
+<!-- ORGANIZED -->
+<div class="preview-section organize-card">
+  <div class="section-title">🧠 Organized</div>
+
+  <p>
+    📌 Personal Tasks<br>
+    • Bills<br>
+    • Shopping<br>
+    • Appointments
+  </p>
+</div>
+<!-- FLASHCARDS -->
+<div class="preview-section flashcard-card">
+  <div class="section-title">🧠 Flashcards</div>
+
+  <div class="flashcard">
+    <p class="q">Q: What is the first pending task?</p>
+    <p class="a">A: Pay electricity bill</p>
+  </div>
+
+  <div class="flashcard">
+    <p class="q">Q: What shopping is mentioned?</p>
+    <p class="a">A: Groceries</p>
+  </div>
+
+  <div class="flashcard">
+    <p class="q">Q: Which appointment is needed?</p>
+    <p class="a">A: Dentist call</p>
+  </div>
+
+</div>
+<!-- AI ACTIONS -->
+
+<!-- AI ACTIONS -->
+<div class="hero-ai-actions">
+
+  <button class="hero-ai-btn yellow">
+    ✨ Summarize
+  </button>
+
+  <button class="hero-ai-btn green">
+    ✅ Tasks
+  </button>
+
+  <button class="hero-ai-btn blue">
+    🧠 Organize
+  </button>
+
+  <button class="hero-ai-btn gray">
+    📝 Generate Title
+  </button>
+
+  <!-- NEW -->
+  <button class="hero-ai-btn purple">
+    🧠 Flashcards
+  </button>
+
+  <button class="hero-ai-btn red">
+    📄 Generate PDF
+  </button>
+
+</div>
+
+<div class="preview-buttons">
+
+  <button class="hero-edit-btn">
+    ✏️ Edit
+  </button>
+
+  <button class="hero-delete-btn">
+    🗑 Delete
+  </button>
+
+</div>
+</section>
+
+
+  <section class="features-section">
+
+  <div class="features-header">
+    <h2>Everything your Second Brain needs</h2>
+    <p>Shikigami turns raw thoughts into structured intelligence with AI-powered tools.</p>
+  </div>
+
+  <div class="features-grid">
+
+    <div class="feature-card">
+      <div class="icon">🧠</div>
+      <h3>AI Chat with Notes</h3>
+      <p>Ask anything from your notes and get instant contextual answers powered by AI memory.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">✨</div>
+      <h3>Smart Summarization</h3>
+      <p>Turn long chaotic notes into clean, structured, readable summaries instantly.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">⚡</div>
+      <h3>One-Click AI Actions</h3>
+      <p>Generate summaries, tasks, flashcards, or titles with a single click.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">✅</div>
+      <h3>Task Extraction</h3>
+      <p>Automatically detect actionable tasks hidden inside your notes.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🧩</div>
+      <h3>Auto Organization</h3>
+      <p>AI organizes your knowledge into structured categories without manual effort.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">📚</div>
+      <h3>Flashcards Engine</h3>
+      <p>Convert notes into revision-ready flashcards for faster learning and retention.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">📄</div>
+      <h3>PDF Export</h3>
+      <p>Export clean structured PDFs of notes, summaries, and flashcards instantly.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">📂</div>
+      <h3>Unified Knowledge Vault</h3>
+      <p>All your notes, ideas, and insights stored in one searchable AI-powered system.</p>
+    </div>
+
+  </div>
+
+</section>
+<section class="features-deep">
+
+  <div class="row g-4">
+
+    <div class="col-md-6">
+      <article class="feature-module">
+
+        <div class="module-header">
+          <div class="module-icon">
+            <i class="fa-solid fa-file-lines"></i>
+          </div>
+          <span class="module-tag">AI Summary Engine</span>
+        </div>
+
+        <h3>Context-Aware Summarization</h3>
+        <p>
+          AI compresses long notes into structured insights while preserving meaning and context.
+        </p>
+
+      </article>
+    </div>
+
+    <div class="col-md-6">
+      <article class="feature-module">
+
+        <div class="module-header">
+          <div class="module-icon">
+            <i class="fa-solid fa-list-check"></i>
+          </div>
+          <span class="module-tag">Task Intelligence</span>
+        </div>
+
+        <h3>Action Extraction System</h3>
+        <p>
+          Automatically detects actionable tasks and converts them into structured to-do lists.
+        </p>
+
+      </article>
+    </div>
+
+    <div class="col-md-6">
+      <article class="feature-module">
+
+        <div class="module-header">
+          <div class="module-icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <span class="module-tag">Knowledge Structuring</span>
+        </div>
+
+        <h3>Automatic Organization Layer</h3>
+        <p>
+          Turns unstructured thoughts into categorized, logically grouped knowledge blocks.
+        </p>
+
+      </article>
+    </div>
+
+    <div class="col-md-6">
+      <article class="feature-module">
+
+        <div class="module-header">
+          <div class="module-icon">
+            <i class="fa-solid fa-pen-fancy"></i>
+          </div>
+          <span class="module-tag">Content Intelligence</span>
+        </div>
+
+        <h3>AI Title & Content Generation</h3>
+        <p>
+          Generates meaningful titles and structured content metadata for better readability.
+        </p>
+
+      </article>
+    </div>
+
+  </div>
+
+</section>
+
+
+   
+<section class="create-card">
+
+  <div class="create-header text-center mb-4">
+
+    <h2>Create New Note</h2>
+
+    <p>Capture your ideas instantly with AI-powered structure</p>
+
+  </div>
+
+  <form method="POST" action="{% url 'savedataview' %}" class="create-form">
+
+    {% csrf_token %}
+
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="title" placeholder="Enter note title">
+    </div>
+
+    <div class="field">
+      <label>Description</label>
+      <textarea name="description" rows="6" placeholder="Write your note here..."></textarea>
+    </div>
+
+    <button class="create-btn">
+      <i class="bi bi-stars"></i>
+      Create Note
+    </button>
+
+  </form>
+
+</section>
+
+<!-- WORKSPACE -->
+
+<div class="workspace-header text-center mb-5">
+
+  <h2 class="workspace-title">My Workspace</h2>
+
+  <div class="workspace-meta">
+    <span class="workspace-badge">
+      🦊 Vault contains {{ notes|length }} Note{{ notes|length|pluralize }}
+    </span>
+  </div>
+
+  <p class="workspace-subtitle">
+    Manage and enhance your notes with AI
+  </p>
+
+</div>
+
+
+<section class="ai-assistant-card">
+
+  <!-- HEADER -->
+  <div class="assistant-header">
+
+    <div>
+      <span class="assistant-badge">✨ AI Assistant</span>
+      <h3>Chat with Your Notes</h3>
+      <p>Ask anything across your knowledge vault in real time.</p>
+    </div>
+
+    <button type="button" class="history-btn" onclick="toggleChatHistory()">
+      <i class="bi bi-clock-history"></i>
+      History
+    </button>
+
+  </div>
+
+  <!-- CHAT INPUT BOX -->
+  <form method="POST" action="{% url 'chat' %}" class="chat-box">
+    {% csrf_token %}
+
+    <div class="chat-input-wrapper">
+
+      <span class="chat-icon">🧠</span>
+
+      <input type="text" name="question"
+        placeholder="Ask anything from your notes...">
+
+      <button type="submit">
+        <i class="bi bi-send-fill"></i>
+      </button>
+
+    </div>
+
+    <!-- QUICK SUGGESTIONS -->
+    <div class="ai-suggestions">
+
+      <button type="button" class="suggestion-chip">
+        🚀 Pending tasks
+      </button>
+
+      <button type="button" class="suggestion-chip">
+        🧠 Summarize notes
+      </button>
+
+      <button type="button" class="suggestion-chip">
+        📂 Organize my workspace
+      </button>
+
+      <button type="button" class="suggestion-chip">
+        ⚡ Important reminders
+      </button>
+
+    </div>
+
+  </form>
+
+  <!-- CHAT HISTORY -->
+  <div id="chatHistory" class="chat-history">
+
+    {% if chat_messages %}
+
+      <h4 class="history-title">Recent Conversations</h4>
+
+      {% for message in chat_messages %}
+
+        <div class="chat-message chat-{{ message.role }}">
+
+          <div class="chat-role">
+            {% if message.role == "user" %}
+              👤 You
+            {% else %}
+              🤖 Shikigami AI
+            {% endif %}
+          </div>
+
+          <div class="chat-text">
+            {{ message.message }}
+          </div>
+
+        </div>
+
+      {% endfor %}
+
+    {% endif %}
+
+  </div>
+
+  {% if ai_answer %}
+  <div class="assistant-response">
+    {{ ai_answer }}
+  </div>
+  {% endif %}
+
+</section>
+
+<script>
+function toggleChatHistory() {
+  const history = document.getElementById("chatHistory");
+
+  if (!history) return;
+
+  history.classList.toggle("active");
+}
+</script>
+    <!-- Notes Grid -->
+    <div class="notes-grid">
+
+{% if notes %}
+
+  {% for note in notes %}
+
+  <article class="note-card">
+
+    <!-- HEADER -->
+    <div class="note-head">
+      <h4 class="note-title {% if not note.ispublished %}muted-line{% endif %}">
+        {{ note.title }}
+      </h4>
+
+      <p class="note-desc">
+        {{ note.description }}
+      </p>
+    </div>
+
+    <!-- AI OUTPUT -->
+    {% if note.ai_summary %}
+    <div class="ai-block summary">
+      <div class="label">✨ Summary</div>
+      <div class="text">{{ note.ai_summary }}</div>
+    </div>
+    {% endif %}
+
+    {% if note.ai_flashcards %}
+<div class="ai-block flashcards">
+
+    <div class="label">
+        🎓 Flashcards
+    </div>
+
+    <pre class="text">
+{{ note.ai_flashcards }}
+    </pre>
+
+</div>
+{% endif %}
+
+    {% if note.ai_tasks %}
+    <div class="ai-block tasks">
+      <div class="label">✅ Tasks</div>
+      <pre class="text">{{ note.ai_tasks }}</pre>
+    </div>
+    {% endif %}
+
+    {% if note.ai_organized %}
+    <div class="ai-block organized">
+      <div class="label">🧠 Organized</div>
+      <pre class="text">{{ note.ai_organized }}</pre>
+    </div>
+    {% endif %}
+
+    <!-- ACTION BUTTONS -->
+    <div class="note-actions">
+   <a href="/flashcards/{{note.id}}" class="btn-ai purple">
+    🎓 Flashcards
+</a>
+      <a href="/summarize/{{note.id}}" class="btn-ai yellow">✨ Summarize</a>
+
+      <a href="/extract/{{note.id}}" class="btn-ai green">✅ Tasks</a>
+
+      <a href="/organize/{{note.id}}" class="btn-ai blue">🧠 Organize</a>
+
+      <a href="/title/{{note.id}}" class="btn-ai gray">📝 Generate Title</a>
+
+      <a href="{% url 'generate_pdf' note.id %}" class="btn-ai orange">
+    📄 Generate PDF
+</a>
+
+      <div class="bottom-actions">
+        <a href="/updatedata/{{note.id}}" class="btn-edit">✏️ Edit</a>
+        <a href="/deletedata/{{note.id}}" class="btn-delete">🗑 Delete</a>
+      </div>
+
+    </div>
+
+  </article>
+
+  {% endfor %}
+
+{% else %}
+
+  <div class="empty-state">
+    <i class="bi bi-journal-text"></i>
+    <h3>No Notes Yet</h3>
+    <p>Create your first note and let AI organize it.</p>
+  </div>
+
+{% endif %}
+
+</div>
+<footer class="saas-footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <h3>🦊 Shikigami</h3>
+      <p>
+        AI-powered notes system that summarizes, extracts tasks, and organizes your thoughts instantly.
+      </p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+
+      <a href="/">Home</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="footer-social">
+      <h4>Connect</h4>
+
+      <a href="https://www.linkedin.com/in/divyansh-pradhan-990382327"
+         target="_blank"
+         class="social-btn">
+
+        <i class="fa-brands fa-linkedin"></i>
+        LinkedIn
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 Shikigami. Built for productivity.</p>
+  </div>
+
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="{% static 'css/js/index.js' %}" defer></script>
+
+</div>
+

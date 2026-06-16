@@ -1,0 +1,401 @@
+ 
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Shikigami Notes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3">
+  <div class="container">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+      <span style="font-size:1.4rem;">🦊</span>
+      <span>Shikigami</span>
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+  <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="/">Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="{% url 'about' %}">About</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="{% url 'contact' %}">Contact</a>
+    </li>
+
+    <!-- Search -->
+    <li class="nav-item">
+      <form method="GET" action="/" class="navbar-search">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search notes..."
+          value="{{ query }}"
+        >
+
+        <button type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+    </li>
+
+    <!-- CTA -->
+    <li class="nav-item ms-lg-2">
+      <a class="btn btn-primary btn-sm px-3 rounded-pill" href="#">
+        Get Started
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+  </div>
+</nav>
+  <header class="about-hero container py-5">
+
+  <div class="row align-items-center g-5">
+
+    <div class="col-lg-7">
+
+      <div class="about-pill">
+        ⚡ AI-Powered Second Brain System
+      </div>
+
+      <h1 class="about-title">
+        Turn messy notes into
+        structured knowledge instantly.
+      </h1>
+
+      <p class="about-subtitle">
+        Shikigami transforms raw thoughts, lectures, ideas, and reminders into
+        AI-generated summaries, actionable tasks, flashcards, and organized knowledge.
+      </p>
+
+      <div class="about-actions">
+        <a class="btn-primary-glow" href="/">Start Building →</a>
+        <a class="btn-secondary-glass" href="/contact/">Contact Us ✉️</a>
+      </div>
+
+      <div class="hero-stats mt-5">
+
+        <div class="hero-stat">
+          <h3>AI</h3>
+          <span>Powered Workflow</span>
+        </div>
+
+        <div class="hero-stat">
+          <h3>6+</h3>
+          <span>Core Features</span>
+        </div>
+
+        <div class="hero-stat">
+          <h3>1</h3>
+          <span>Knowledge Vault</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-5">
+
+      <div class="about-glass-card">
+
+        {% load static %}
+
+        <img
+          src="{% static 'css/images/shikigami.png' %}"
+          class="about-img"
+          alt="Shikigami Dashboard"
+        >
+
+        <h3>Shikigami AI Engine</h3>
+
+        <ul>
+          <li>✨ AI Summaries</li>
+          <li>✅ Task Extraction</li>
+          <li>🧠 Smart Organization</li>
+          <li>🎓 Flashcards</li>
+          <li>💬 Chat With Notes</li>
+          <li>📄 PDF Export</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+<section class="container py-5">
+
+  <div class="text-center mb-5">
+
+    <span class="section-tag">
+      WHY SHIKIGAMI
+    </span>
+
+    <h2 class="about-heading">
+      From scattered notes to structured knowledge
+    </h2>
+
+    <p class="about-muted">
+      Shikigami helps transform information into actionable intelligence.
+    </p>
+
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-lg-4">
+
+      <div class="story-card">
+
+        <img src="https://i.pinimg.com/1200x/8a/88/ad/8a88adff18bc9d9e9e8c2d052e443028.jpg"
+             class="story-img">
+
+        <h3>The Problem</h3>
+
+        <p>
+          Ideas become buried inside notebooks, screenshots,
+          documents and unfinished drafts.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="story-card highlight">
+
+        <img src="https://i.pinimg.com/736x/fe/89/fd/fe89fda3f98754ffe76212f4e6edf6d8.jpg"
+             class="story-img">
+
+        <h3>The Solution</h3>
+
+        <p>
+          AI automatically summarizes, organizes and extracts
+          meaningful information from your notes.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="story-card">
+
+        <img src="https://i.pinimg.com/736x/9e/8a/c1/9e8ac16746ce4911a58dff7b18f076c5.jpg"
+             class="story-img">
+
+        <h3>The Outcome</h3>
+
+        <p>
+          Faster learning, clearer thinking and improved productivity.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="container py-5">
+
+  <div class="text-center mb-5">
+
+    <span class="section-tag">
+      CAPABILITIES
+    </span>
+
+    <h2 class="about-heading">
+      Everything inside Shikigami
+    </h2>
+
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-3">
+      <div class="feature-card-3d">
+        <h4>✨ AI Summaries</h4>
+        <p>Condense long notes into concise insights.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="feature-card-3d">
+        <h4>✅ Task Extraction</h4>
+        <p>Turn thoughts into actionable tasks.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="feature-card-3d">
+        <h4>🧠 Smart Organization</h4>
+        <p>Transform chaos into structured knowledge.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="feature-card-3d">
+        <h4>📝 AI Titles</h4>
+        <p>Generate meaningful titles instantly.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="feature-card-3d">
+        <h4>🎓 Flashcards</h4>
+        <p>Convert notes into revision material.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="feature-card-3d">
+        <h4>💬 Chat With Notes</h4>
+        <p>Ask questions across your knowledge vault.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="feature-card-3d">
+        <h4>📄 PDF Export</h4>
+        <p>Export AI-enhanced notes professionally.</p>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="feature-card-3d">
+        <h4>📚 Knowledge Vault</h4>
+        <p>Keep all knowledge organized in one place.</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<section class="container py-5">
+
+  <div class="row align-items-center g-5">
+
+    <div class="col-lg-6">
+
+      <img src="https://i.pinimg.com/1200x/24/59/34/2459349bb619ade7bab04431e4217bcf.jpg"
+           class="showcase-img"
+           alt="Future Screenshot">
+
+    </div>
+
+    <div class="col-lg-6">
+
+      <span class="section-tag">
+        KNOWLEDGE SYSTEM
+      </span>
+
+      <h2>
+        More than note-taking.
+      </h2>
+
+      <p>
+        Shikigami is designed to become your AI-powered personal
+        knowledge management system.
+      </p>
+
+      <p>
+        Store information, transform it using AI, and retrieve
+        insights whenever you need them.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="about-cta container py-5 text-center">
+
+  <h2>
+    Start building your second brain today.
+  </h2>
+
+  <p>
+    Capture ideas. Structure knowledge. Remember more.
+  </p>
+
+  <a href="/" class="btn-primary-glow">
+    Get Started →
+  </a>
+
+</section>
+ <footer class="saas-footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <h3>🦊 Shikigami</h3>
+      <p>
+        AI-powered notes system that summarizes, extracts tasks, and organizes your thoughts instantly.
+      </p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+
+      <a href="/">Home</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="footer-social">
+      <h4>Connect</h4>
+
+      <a href="https://www.linkedin.com/in/divyansh-pradhan-990382327"
+         target="_blank"
+         class="social-btn">
+
+        <i class="fa-brands fa-linkedin"></i>
+        LinkedIn
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 Shikigami. Built for productivity.</p>
+  </div>
+
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

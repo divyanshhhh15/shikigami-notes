@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}
+update page
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+<form action="{% url 'updatedataview' note.id %}" method="post" class="container mx-auto card p-4"> 
+
+    {% include 'component/showmessage.html' %}
+    
+    {% csrf_token %}
+<div class="mb-3">
+    <div class="container mx-auto card p-4">
+        <label for="title"> note title</label>
+        <input name="title" type="text" id = "title" class="form-control" placeholder="enter your note title here" value="{{note.title}}">
+</div>
+<div class="mb-3">
+    <div class="container mx-auto card p-4">
+        <label for="description"> note description</label>
+        <textarea name="description" role="5" type="text" id = "description" class="form-control" placeholder="enter your note description here">{{note.description}}</textarea>
+</div>
+<div class="mb-3">
+   <input type="checkbox" name="published" 
+   {% if  note.ispublished %}
+    checked
+{% else %}
+    {% endif %}
+
+   id="published"> <label for="published"> status</label>
+    
+</div>
+<div class="mb-3">
+    <button style ="width: 100;" class="btn btn-primary">add note <i class="fa-solid fa-dragon"></i></button>
+</div>
+</form>
+
+ <!-- <div class="container">
+<h1>notes ({{ notes| length}})</h1>
+
+<div class="row">
+    {% if notes%}
+    {% for note in notes %}
+    <div class="p-2 col-sm-2" col-lg-4 col-md-3>
+        <div class="card">
+            <div class="card-body">
+                <h4>{{note.title}}</h4>
+                <p>{{note.description}}</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-info">edit</button>
+                <a href="/deletedata/{{note.id}}" class="btn btn-sm btn-danger"> delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+ {% else %}
+    
+ <div class="card mx-auto py-4">
+    <h1 class="text-center">no notes to perform task on </h1>
+    </div>
+    {% endif %}
+</div>
+
+</div> -->
+
+
+{% endblock %}

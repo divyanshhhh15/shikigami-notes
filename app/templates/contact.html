@@ -1,0 +1,282 @@
+{% load static %}
+    <!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact uss</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3">
+  <div class="container">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="/">
+      <span style="font-size:1.4rem;">🦊</span>
+      <span>Shikigami</span>
+    </a>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+  <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="/">Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="{% url 'about' %}">About</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link nav-hover" href="{% url 'contact' %}">Contact</a>
+    </li>
+
+    <!-- Search -->
+    <li class="nav-item">
+      <form method="GET" action="/" class="navbar-search">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search notes..."
+          value="{{ query }}"
+        >
+
+        <button type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+    </li>
+
+    <!-- CTA -->
+    <li class="nav-item ms-lg-2">
+      <a class="btn btn-primary btn-sm px-3 rounded-pill" href="#">
+        Get Started
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+  </div>
+</nav>
+<div class="container py-5 text-center">
+
+    <span class="badge bg-primary px-3 py-2 mb-3">
+        🦊 Shikigami Support
+    </span>
+
+    <h1 class="display-4 fw-bold title-gradient">
+        Contact Us
+    </h1>
+
+    <p class="lead text-secondary mx-auto" style="max-width:700px;">
+        Have a question, bug report, or feature request?
+        We'd love to hear from you.
+    </p>
+
+</div>
+      <div class="container pb-5">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<div class="card shadow-lg border-0 rounded-4">
+<div class="card-body p-4 p-md-5">
+      <form action="{% url 'savedataview' %}" method="post">
+        {% csrf_token %}
+
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong> please fill the fields below.</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% endfor %}
+
+       <div class="mb-4">
+
+<label class="form-label fw-semibold">
+Email Address
+</label>
+
+<input
+type="email"
+class="form-control form-control-lg"
+name="email"
+placeholder="you@example.com">
+
+</div>
+       <div class="mb-4">
+
+<label class="form-label fw-semibold">
+Issue Type
+</label>
+
+<select
+class="form-select form-select-lg"
+name="problem">
+
+<option selected disabled>
+Choose an option
+</option>
+
+<option>Bug Report</option>
+<option>Feature Request</option>
+<option>Account & Login Issues</option>
+<option>Data & Sync Problems</option>
+<option>Technical Support</option>
+<option>General Inquiry</option>
+
+</select>
+
+</div>
+        <div class="mb-4">
+
+<label class="form-label fw-semibold">
+eloborate your concern
+</label>
+
+<textarea
+class="form-control"
+name="message"
+rows="6"
+placeholder="Tell us about your issue in detail...">
+</textarea>
+
+</div>
+
+       <button
+class="btn btn-primary btn-lg w-100 py-3 fw-semibold">
+
+<i class="bi bi-send-fill me-2"></i>
+submit
+
+</button>
+   </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row g-4 mt-5">
+
+<div class="col-md-4">
+
+<div class="card h-100 border-0 shadow-sm rounded-4">
+
+<div class="card-body text-center">
+
+<h5>⚡ Fast Support</h5>
+
+<p class="text-secondary mb-0">
+Quick responses for bugs and account issues.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card h-100 border-0 shadow-sm rounded-4">
+
+<div class="card-body text-center">
+
+<h5>🧠 Feature Requests</h5>
+
+<p class="text-secondary mb-0">
+Suggest improvements and new ideas.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card h-100 border-0 shadow-sm rounded-4">
+
+<div class="card-body text-center">
+
+<h5>🔒 Privacy First</h5>
+
+<p class="text-secondary mb-0">
+Your information stays secure and private.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<footer class="saas-footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-brand">
+      <h3>🦊 Shikigami</h3>
+      <p>
+        AI-powered notes system that summarizes, extracts tasks, and organizes your thoughts instantly.
+      </p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+
+      <a href="/">Home</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="footer-social">
+      <h4>Connect</h4>
+
+      <a href="https://www.linkedin.com/in/divyansh-pradhan-990382327"
+         target="_blank"
+         class="social-btn">
+
+        <i class="fa-brands fa-linkedin"></i>
+        LinkedIn
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 Shikigami. Built for productivity.</p>
+  </div>
+
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>  
+
+
+
+</body>
+</html>    
