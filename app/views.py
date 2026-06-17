@@ -396,9 +396,17 @@ def generate_pdf(request, id):
         content_type="application/pdf"
     )
 
+    # Sanitize filename: HTTP header values must not contain CR/LF.
+    raw_title = str(getattr(note, "title", "") or "").strip()
+    safe_title = raw_title.replace("\r", " ").replace("\n", " ")
+    safe_title = " ".join(safe_title.split())  # normalize whitespace
+    if not safe_title:
+        safe_title = f"note-{note.id}"
+
     response[
         "Content-Disposition"
-    ] = f'attachment; filename="{note.title}.pdf"'
+    ] = f'attachment; filename="{safe_title}.pdf"'
+
 
     doc = SimpleDocTemplate(response)
 
