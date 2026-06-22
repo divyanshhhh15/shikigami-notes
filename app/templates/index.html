@@ -62,6 +62,19 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
       </form>
     </li>
 
+ <!-- NEW NOTE -->
+<li class="nav-item ms-lg-2">
+  <button
+    type="button"
+    class="btn new-note-btn btn-sm px-4 rounded-pill"
+    data-bs-toggle="modal"
+    data-bs-target="#createNoteModal">
+
+    <i class="bi bi-plus-lg"></i>
+    New Note
+
+  </button>
+</li>
     <!-- CTA -->
     <li class="nav-item ms-lg-2">
       <a class="btn btn-primary btn-sm px-3 rounded-pill" href="#">
@@ -382,41 +395,6 @@ Pay electricity bill, buy groceries, call dentist, and book train tickets.
 
 </section>
 
-
-   
-<section class="create-card">
-
-  <div class="create-header text-center mb-4">
-
-    <h2>Create New Note</h2>
-
-    <p>Capture your ideas instantly with AI-powered structure</p>
-
-  </div>
-
-  <form method="POST" action="{% url 'savedataview' %}" class="create-form">
-
-    {% csrf_token %}
-
-    <div class="field">
-      <label>Title</label>
-      <input type="text" name="title" placeholder="Enter note title">
-    </div>
-
-    <div class="field">
-      <label>Description</label>
-      <textarea name="description" rows="6" placeholder="Write your note here..."></textarea>
-    </div>
-
-    <button class="create-btn">
-      <i class="bi bi-stars"></i>
-      Create Note
-    </button>
-
-  </form>
-
-</section>
-
 <!-- WORKSPACE -->
 
 <div class="workspace-header text-center mb-5">
@@ -636,6 +614,52 @@ function toggleChatHistory() {
 
 {% endif %}
 
+</div>
+<div class="modal fade" id="createNoteModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title">✨ Create New Note</h5>
+
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal">
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form method="POST" action="{% url 'savedataview' %}">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <input
+              type="text"
+              name="title"
+              class="form-control"
+              placeholder="Enter note title">
+          </div>
+
+          <div class="mb-3">
+            <textarea
+              name="description"
+              rows="6"
+              class="form-control"
+              placeholder="Write your note here..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">
+            Create Note
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
 </div>
 <footer class="saas-footer">
 

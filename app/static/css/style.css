@@ -4310,3 +4310,81 @@ body::after{
   }
 
 }
+.new-note-btn{
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #6366f1
+    );
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all .3s ease;
+}
+
+.new-note-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(139,92,246,.35);
+    color: #fff;
+}
+/* SHIKIGAMI MODAL OVERRIDE */
+
+#createNoteModal .modal-content{
+    background:#0b1120 !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+    border-radius:24px !important;
+    box-shadow:0 25px 80px rgba(0,0,0,.5) !important;
+}
+
+#createNoteModal .modal-header{
+    border-bottom:1px solid rgba(255,255,255,.08) !important;
+    padding:1.25rem 1.5rem !important;
+}
+
+#createNoteModal .modal-title{
+    color:#fff !important;
+    font-weight:700 !important;
+}
+
+#createNoteModal .modal-body{
+    padding:1.5rem !important;
+}
+
+#createNoteModal .form-control{
+    background:rgba(255,255,255,.04) !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+    color:#fff !important;
+    border-radius:14px !important;
+    padding:14px !important;
+}
+
+#createNoteModal .form-control::placeholder{
+    color:#94a3b8 !important;
+}
+
+#createNoteModal .form-control:focus{
+    background:rgba(255,255,255,.06) !important;
+    color:#fff !important;
+    border-color:#8b5cf6 !important;
+    box-shadow:0 0 0 4px rgba(139,92,246,.15) !important;
+}
+
+#createNoteModal .btn-primary{
+    background:linear-gradient(135deg,#8b5cf6,#3b82f6) !important;
+    border:none !important;
+    border-radius:14px !important;
+    padding:12px !important;
+    font-weight:600 !important;
+}
+
+#createNoteModal .btn-primary:hover{
+    transform:translateY(-2px);
+}
+
+.modal-backdrop.show{
+    opacity:.85 !important;
+    backdrop-filter:blur(8px);
+}
